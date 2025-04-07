@@ -1,29 +1,24 @@
 # SIMPLE-Graphic
-Rendering engine for all SIMPLE projects that require graphics rendering
+A simple cross-platfrom graphics rendering engine for C/C++, based on OpenGL/GLFW
 ## Usage
 1. Clone SIMPLE-Graphic to local:
 ```bash
 git clone https://github.com/Tianxiaoxiao1021/SIMPLE-Graphic (local path)
 ```
-### tips
-If there are any SIMPLE projects that require local graphics rendering, clone SIMPLE-Graphic to the path:
-../path/to/lib/SIMPLE-xxx/dependency/SIMPLE-Graphics(always empty)
-
-2. If you haven't local SIMPLE project require the graphics rendering, you can use it in your code:
-example:
-```cpp
+2. Add GLFW path to your project.
+  
+This is a example for use this engine.
+```c
 #include "../SIMPLE-Graphics/Engine.h"
 using namespace std;
 int main(){
   SrenderEngine engine;
   engine.init();
+  engine.setupwindow(800, 600, "Test Window");
   while(true){
     engine.update();
-    engine.render();
-    engine.clearbuffer();
   }
   return 0;
 }
 ```
-## tips
-make sure your C++ complier supports C++14 and above, the SIMPLE-Graphics used very lots of morden C++'s features.
+Code will create a 800*600's window, the title will be "Test window".
