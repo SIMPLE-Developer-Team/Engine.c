@@ -10,13 +10,12 @@ git clone https://github.com/Tianxiaoxiao1021/SIMPLE-Graphic (local path)
 This is a example for use this engine.
 ```c
 #include "../SIMPLE-Graphics/Engine.h"
-using namespace std;
 int main(){
   SrenderEngine engine;
-  engine.init();
-  engine.setupwindow(800, 600, "Test Window");
+  initengine(&engine);
+  setupwindow(&engine, 800, 600, "Test window");
   while(true){
-    engine.update();
+    update(&engine);
   }
   return 0;
 }
