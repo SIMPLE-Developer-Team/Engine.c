@@ -1,23 +1,35 @@
 # SIMPLE-Graphic
-A simple cross-platfrom graphics rendering engine for C/C++, based on OpenGL/GLFW
-## Usage
-1. Clone SIMPLE-Graphic to local:
-```bash
-git clone https://github.com/Tianxiaoxiao1021/SIMPLE-Graphic (local path)
-```
-2. Add GLFW path to your project.
-  
-This is a example for use this engine.
+A simple, cross-platfrom and single-file graphics rendering engine for C/C++, based on OpenGL & GLFW & GLEW.  
+Essentially, its just a simple encapsulation of OpenGL/GLFW feature.
+## example:
 ```c
-#include "../SIMPLE-Graphics/Engine.h"
+#include "Engine.h"
 int main(){
   SrenderEngine engine;
-  initengine(&engine);
-  setupwindow(&engine, 800, 600, "Test window");
-  while(true){
-    update(&engine);
+  Sstatus initstatus;
+  initstatus = initEngine(&engine);
+  if(initstatus == Sfail){
+    printf("Failed to init engine!\n");
+    return -1;
   }
+  initstatus = initWindow(&engine, 800, 600, "Test window", Sfalse);
+  if(initstatus == Sfail){
+    printf("Failed to create window!\n");
+    return -1;
+  }
+  Vertex v[] = {
+    {{0,0}, WHITE},
+    {{0, 600}, WHITE},
+    {{800, 600}, WHITE}
+  };
+  unsigned int index[] = {0, 1, 2};
+  setVertexData(&engine, v, 3);
+  setIndexData(&engine, index, 3);
+  while(!shouldclose(&engine)){
+    render_and_update(&engine);
+  }
+  freeEngine(&engine);
   return 0;
 }
 ```
-Code will create a 800*600's window, the title will be "Test window".
+Code will create a 800*600's window with a triangle , the title will be "Test window".
