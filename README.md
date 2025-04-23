@@ -1,6 +1,9 @@
 # SIMPLE-Graphic
-A simple, cross-platfrom and single-file graphics rendering engine for C/C++, based on OpenGL & GLFW & GLEW.  
-Essentially, its just a simple encapsulation of OpenGL/GLFW feature.
+A simple, cross-platfrom and single-file graphics rendering engine for C/C++.
+## requirements
+- C version: C98+
+- C++ version: C++11+
+- OpenGL version: 3.0+
 ## example:
 ```c
 #include "Engine.h"
